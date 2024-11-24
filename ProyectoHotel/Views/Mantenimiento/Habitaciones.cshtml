@@ -305,9 +305,19 @@
 
                     if (data.resultado) {
                         tabladata.ajax.reload();
+                        Swal.fire({
+                            title: "Good job!",
+                            text: "Se ha agregado la habitacion",
+                            icon: "success"
+                        });
                         $('#FormModal').modal('hide');
                     } else {
-                        alert("No se pudo guardar los cambios")
+                        Swal.fire({
+                            title: 'Error!',
+                            text: 'No se pudo guardar la habiatacion',
+                            icon: 'error',
+                            confirmButtonText: 'Cool'
+                        })
                     }
                 },
                 error: function (error) {

@@ -7,6 +7,6 @@ namespace ProyectoHotel.Logica
 {
     public class Conexion
     {
-        public static string CN = "Data Source=.;Initial Catalog=DB_HOTEL;Integrated Security=True";
+        public static string CN = "Server=DESKTOP-994U8CH;Database=DB_HOTEL;User Id=sa;Password=Oden333*;TrustServerCertificate=True;";
     }
 }
