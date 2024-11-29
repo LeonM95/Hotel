@@ -1,0 +1,83 @@
+﻿@model ProyectoHotel.Models.HABITACION
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>HABITACION</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Numero)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Numero)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Detalle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Detalle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Precio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Precio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaCreacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaCreacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CATEGORIA.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CATEGORIA.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ESTADO_HABITACION.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ESTADO_HABITACION.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PISO.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PISO.Descripcion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdHabitacion }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

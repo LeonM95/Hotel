@@ -182,3 +182,7 @@ C:\Users\Usuario\Documents\C#\028_SistemaHotelEnMVC\ProyectoHotel\obj\Debug\Proy
 C:\Users\Usuario\Documents\C#\028_SistemaHotelEnMVC\ProyectoHotel\obj\Debug\ProyectoHotel.csproj.CopyComplete
 C:\Users\Usuario\Documents\C#\028_SistemaHotelEnMVC\ProyectoHotel\obj\Debug\ProyectoHotel.dll
 C:\Users\Usuario\Documents\C#\028_SistemaHotelEnMVC\ProyectoHotel\obj\Debug\ProyectoHotel.pdb
+C:\Users\Usuario\Documents\C#\028_SistemaHotelEnMVC\ProyectoHotel\bin\EntityFramework.dll
+C:\Users\Usuario\Documents\C#\028_SistemaHotelEnMVC\ProyectoHotel\bin\EntityFramework.SqlServer.dll
+C:\Users\Usuario\Documents\C#\028_SistemaHotelEnMVC\ProyectoHotel\bin\EntityFramework.xml
+C:\Users\Usuario\Documents\C#\028_SistemaHotelEnMVC\ProyectoHotel\bin\EntityFramework.SqlServer.xml

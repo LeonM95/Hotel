@@ -1,0 +1,115 @@
+﻿@model ProyectoHotel.Models.RECEPCION
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>RECEPCION</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaEntrada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaEntrada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaSalida)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaSalida)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaSalidaConfirmacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaSalidaConfirmacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrecioInicial)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrecioInicial)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Adelanto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Adelanto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrecioRestante)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrecioRestante)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalPagado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalPagado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CostoPenalidad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CostoPenalidad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Observacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Observacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HABITACION.Numero)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HABITACION.Numero)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PERSONA.TipoDocumento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PERSONA.TipoDocumento)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdRecepcion }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

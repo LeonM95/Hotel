@@ -1,0 +1,382 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DB_HOTELModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CATEGORIA">
+    <Key>
+      <PropertyRef Name="IdCategoria" />
+    </Key>
+    <Property Name="IdCategoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Estado" Type="Boolean" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="HABITACIONs" Relationship="Self.FK__HABITACIO__IdCat__31EC6D26" FromRole="CATEGORIA" ToRole="HABITACION" />
+  </EntityType>
+  <EntityType Name="DETALLE_VENTA">
+    <Key>
+      <PropertyRef Name="IdDetalleVenta" />
+    </Key>
+    <Property Name="IdDetalleVenta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdVenta" Type="Int32" />
+    <Property Name="IdProducto" Type="Int32" />
+    <Property Name="Cantidad" Type="Int32" />
+    <Property Name="SubTotal" Type="Decimal" Precision="10" Scale="2" />
+    <NavigationProperty Name="PRODUCTO" Relationship="Self.FK__DETALLE_V__IdPro__4D94879B" FromRole="DETALLE_VENTA" ToRole="PRODUCTO" />
+    <NavigationProperty Name="VENTA" Relationship="Self.FK__DETALLE_V__IdVen__4CA06362" FromRole="DETALLE_VENTA" ToRole="VENTA" />
+  </EntityType>
+  <EntityType Name="ESTADO_HABITACION">
+    <Key>
+      <PropertyRef Name="IdEstadoHabitacion" />
+    </Key>
+    <Property Name="IdEstadoHabitacion" Type="Int32" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Estado" Type="Boolean" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="HABITACIONs" Relationship="Self.FK__HABITACIO__IdEst__300424B4" FromRole="ESTADO_HABITACION" ToRole="HABITACION" />
+  </EntityType>
+  <EntityType Name="HABITACION">
+    <Key>
+      <PropertyRef Name="IdHabitacion" />
+    </Key>
+    <Property Name="IdHabitacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Numero" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Detalle" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Precio" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="IdEstadoHabitacion" Type="Int32" />
+    <Property Name="IdPiso" Type="Int32" />
+    <Property Name="IdCategoria" Type="Int32" />
+    <Property Name="Estado" Type="Boolean" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="CATEGORIA" Relationship="Self.FK__HABITACIO__IdCat__31EC6D26" FromRole="HABITACION" ToRole="CATEGORIA" />
+    <NavigationProperty Name="ESTADO_HABITACION" Relationship="Self.FK__HABITACIO__IdEst__300424B4" FromRole="HABITACION" ToRole="ESTADO_HABITACION" />
+    <NavigationProperty Name="PISO" Relationship="Self.FK__HABITACIO__IdPis__30F848ED" FromRole="HABITACION" ToRole="PISO" />
+    <NavigationProperty Name="RECEPCIONs" Relationship="Self.FK__RECEPCION__IdHab__440B1D61" FromRole="HABITACION" ToRole="RECEPCION" />
+  </EntityType>
+  <EntityType Name="PERSONA">
+    <Key>
+      <PropertyRef Name="IdPersona" />
+    </Key>
+    <Property Name="IdPersona" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TipoDocumento" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Documento" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Correo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Clave" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IdTipoPersona" Type="Int32" />
+    <Property Name="Estado" Type="Boolean" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="TIPO_PERSONA" Relationship="Self.FK__PERSONA__IdTipoP__3E52440B" FromRole="PERSONA" ToRole="TIPO_PERSONA" />
+    <NavigationProperty Name="RECEPCIONs" Relationship="Self.FK__RECEPCION__IdCli__4316F928" FromRole="PERSONA" ToRole="RECEPCION" />
+  </EntityType>
+  <EntityType Name="PISO">
+    <Key>
+      <PropertyRef Name="IdPiso" />
+    </Key>
+    <Property Name="IdPiso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Estado" Type="Boolean" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="HABITACIONs" Relationship="Self.FK__HABITACIO__IdPis__30F848ED" FromRole="PISO" ToRole="HABITACION" />
+  </EntityType>
+  <EntityType Name="PRODUCTO">
+    <Key>
+      <PropertyRef Name="IdProducto" />
+    </Key>
+    <Property Name="IdProducto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Detalle" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Precio" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="Cantidad" Type="Int32" />
+    <Property Name="Estado" Type="Boolean" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="DETALLE_VENTA" Relationship="Self.FK__DETALLE_V__IdPro__4D94879B" FromRole="PRODUCTO" ToRole="DETALLE_VENTA" />
+  </EntityType>
+  <EntityType Name="RECEPCION">
+    <Key>
+      <PropertyRef Name="IdRecepcion" />
+    </Key>
+    <Property Name="IdRecepcion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdCliente" Type="Int32" />
+    <Property Name="IdHabitacion" Type="Int32" />
+    <Property Name="FechaEntrada" Type="DateTime" Precision="3" />
+    <Property Name="FechaSalida" Type="DateTime" Precision="3" />
+    <Property Name="FechaSalidaConfirmacion" Type="DateTime" Precision="3" />
+    <Property Name="PrecioInicial" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="Adelanto" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="PrecioRestante" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="TotalPagado" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="CostoPenalidad" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="Observacion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Estado" Type="Boolean" />
+    <NavigationProperty Name="HABITACION" Relationship="Self.FK__RECEPCION__IdHab__440B1D61" FromRole="RECEPCION" ToRole="HABITACION" />
+    <NavigationProperty Name="PERSONA" Relationship="Self.FK__RECEPCION__IdCli__4316F928" FromRole="RECEPCION" ToRole="PERSONA" />
+    <NavigationProperty Name="VENTAs" Relationship="Self.FK__VENTA__IdRecepci__49C3F6B7" FromRole="RECEPCION" ToRole="VENTA" />
+  </EntityType>
+  <EntityType Name="TIPO_PERSONA">
+    <Key>
+      <PropertyRef Name="IdTipoPersona" />
+    </Key>
+    <Property Name="IdTipoPersona" Type="Int32" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Estado" Type="Boolean" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="PERSONAs" Relationship="Self.FK__PERSONA__IdTipoP__3E52440B" FromRole="TIPO_PERSONA" ToRole="PERSONA" />
+  </EntityType>
+  <EntityType Name="VENTA">
+    <Key>
+      <PropertyRef Name="IdVenta" />
+    </Key>
+    <Property Name="IdVenta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdRecepcion" Type="Int32" />
+    <Property Name="Total" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="DETALLE_VENTA" Relationship="Self.FK__DETALLE_V__IdVen__4CA06362" FromRole="VENTA" ToRole="DETALLE_VENTA" />
+    <NavigationProperty Name="RECEPCION" Relationship="Self.FK__VENTA__IdRecepci__49C3F6B7" FromRole="VENTA" ToRole="RECEPCION" />
+  </EntityType>
+  <Association Name="FK__HABITACIO__IdCat__31EC6D26">
+    <End Role="CATEGORIA" Type="Self.CATEGORIA" Multiplicity="0..1" />
+    <End Role="HABITACION" Type="Self.HABITACION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATEGORIA">
+        <PropertyRef Name="IdCategoria" />
+      </Principal>
+      <Dependent Role="HABITACION">
+        <PropertyRef Name="IdCategoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DETALLE_V__IdPro__4D94879B">
+    <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="0..1" />
+    <End Role="DETALLE_VENTA" Type="Self.DETALLE_VENTA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRODUCTO">
+        <PropertyRef Name="IdProducto" />
+      </Principal>
+      <Dependent Role="DETALLE_VENTA">
+        <PropertyRef Name="IdProducto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DETALLE_V__IdVen__4CA06362">
+    <End Role="VENTA" Type="Self.VENTA" Multiplicity="0..1" />
+    <End Role="DETALLE_VENTA" Type="Self.DETALLE_VENTA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VENTA">
+        <PropertyRef Name="IdVenta" />
+      </Principal>
+      <Dependent Role="DETALLE_VENTA">
+        <PropertyRef Name="IdVenta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HABITACIO__IdEst__300424B4">
+    <End Role="ESTADO_HABITACION" Type="Self.ESTADO_HABITACION" Multiplicity="0..1" />
+    <End Role="HABITACION" Type="Self.HABITACION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ESTADO_HABITACION">
+        <PropertyRef Name="IdEstadoHabitacion" />
+      </Principal>
+      <Dependent Role="HABITACION">
+        <PropertyRef Name="IdEstadoHabitacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HABITACIO__IdPis__30F848ED">
+    <End Role="PISO" Type="Self.PISO" Multiplicity="0..1" />
+    <End Role="HABITACION" Type="Self.HABITACION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PISO">
+        <PropertyRef Name="IdPiso" />
+      </Principal>
+      <Dependent Role="HABITACION">
+        <PropertyRef Name="IdPiso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RECEPCION__IdHab__440B1D61">
+    <End Role="HABITACION" Type="Self.HABITACION" Multiplicity="0..1" />
+    <End Role="RECEPCION" Type="Self.RECEPCION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HABITACION">
+        <PropertyRef Name="IdHabitacion" />
+      </Principal>
+      <Dependent Role="RECEPCION">
+        <PropertyRef Name="IdHabitacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PERSONA__IdTipoP__3E52440B">
+    <End Role="TIPO_PERSONA" Type="Self.TIPO_PERSONA" Multiplicity="0..1" />
+    <End Role="PERSONA" Type="Self.PERSONA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPO_PERSONA">
+        <PropertyRef Name="IdTipoPersona" />
+      </Principal>
+      <Dependent Role="PERSONA">
+        <PropertyRef Name="IdTipoPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RECEPCION__IdCli__4316F928">
+    <End Role="PERSONA" Type="Self.PERSONA" Multiplicity="0..1" />
+    <End Role="RECEPCION" Type="Self.RECEPCION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PERSONA">
+        <PropertyRef Name="IdPersona" />
+      </Principal>
+      <Dependent Role="RECEPCION">
+        <PropertyRef Name="IdCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__VENTA__IdRecepci__49C3F6B7">
+    <End Role="RECEPCION" Type="Self.RECEPCION" Multiplicity="0..1" />
+    <End Role="VENTA" Type="Self.VENTA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RECEPCION">
+        <PropertyRef Name="IdRecepcion" />
+      </Principal>
+      <Dependent Role="VENTA">
+        <PropertyRef Name="IdRecepcion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DB_HOTELEntities_v2" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CATEGORIAs" EntityType="Self.CATEGORIA" />
+    <EntitySet Name="DETALLE_VENTA" EntityType="Self.DETALLE_VENTA" />
+    <EntitySet Name="ESTADO_HABITACION" EntityType="Self.ESTADO_HABITACION" />
+    <EntitySet Name="HABITACIONs" EntityType="Self.HABITACION" />
+    <EntitySet Name="PERSONAs" EntityType="Self.PERSONA" />
+    <EntitySet Name="PISOes" EntityType="Self.PISO" />
+    <EntitySet Name="PRODUCTOes" EntityType="Self.PRODUCTO" />
+    <EntitySet Name="RECEPCIONs" EntityType="Self.RECEPCION" />
+    <EntitySet Name="TIPO_PERSONA" EntityType="Self.TIPO_PERSONA" />
+    <EntitySet Name="VENTAs" EntityType="Self.VENTA" />
+    <AssociationSet Name="FK__HABITACIO__IdCat__31EC6D26" Association="Self.FK__HABITACIO__IdCat__31EC6D26">
+      <End Role="CATEGORIA" EntitySet="CATEGORIAs" />
+      <End Role="HABITACION" EntitySet="HABITACIONs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DETALLE_V__IdPro__4D94879B" Association="Self.FK__DETALLE_V__IdPro__4D94879B">
+      <End Role="PRODUCTO" EntitySet="PRODUCTOes" />
+      <End Role="DETALLE_VENTA" EntitySet="DETALLE_VENTA" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DETALLE_V__IdVen__4CA06362" Association="Self.FK__DETALLE_V__IdVen__4CA06362">
+      <End Role="VENTA" EntitySet="VENTAs" />
+      <End Role="DETALLE_VENTA" EntitySet="DETALLE_VENTA" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HABITACIO__IdEst__300424B4" Association="Self.FK__HABITACIO__IdEst__300424B4">
+      <End Role="ESTADO_HABITACION" EntitySet="ESTADO_HABITACION" />
+      <End Role="HABITACION" EntitySet="HABITACIONs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HABITACIO__IdPis__30F848ED" Association="Self.FK__HABITACIO__IdPis__30F848ED">
+      <End Role="PISO" EntitySet="PISOes" />
+      <End Role="HABITACION" EntitySet="HABITACIONs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RECEPCION__IdHab__440B1D61" Association="Self.FK__RECEPCION__IdHab__440B1D61">
+      <End Role="HABITACION" EntitySet="HABITACIONs" />
+      <End Role="RECEPCION" EntitySet="RECEPCIONs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PERSONA__IdTipoP__3E52440B" Association="Self.FK__PERSONA__IdTipoP__3E52440B">
+      <End Role="TIPO_PERSONA" EntitySet="TIPO_PERSONA" />
+      <End Role="PERSONA" EntitySet="PERSONAs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RECEPCION__IdCli__4316F928" Association="Self.FK__RECEPCION__IdCli__4316F928">
+      <End Role="PERSONA" EntitySet="PERSONAs" />
+      <End Role="RECEPCION" EntitySet="RECEPCIONs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__VENTA__IdRecepci__49C3F6B7" Association="Self.FK__VENTA__IdRecepci__49C3F6B7">
+      <End Role="RECEPCION" EntitySet="RECEPCIONs" />
+      <End Role="VENTA" EntitySet="VENTAs" />
+    </AssociationSet>
+    <FunctionImport Name="sp_ModificarCategoria">
+      <Parameter Name="IdCategoria" Mode="In" Type="Int32" />
+      <Parameter Name="Descripcion" Mode="In" Type="String" />
+      <Parameter Name="Estado" Mode="In" Type="Boolean" />
+      <Parameter Name="Resultado" Mode="InOut" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ModificarHabitacion">
+      <Parameter Name="IdHabitacion" Mode="In" Type="Int32" />
+      <Parameter Name="Numero" Mode="In" Type="String" />
+      <Parameter Name="Detalle" Mode="In" Type="String" />
+      <Parameter Name="Precio" Mode="In" Type="Decimal" />
+      <Parameter Name="IdPiso" Mode="In" Type="String" />
+      <Parameter Name="IdCategoria" Mode="In" Type="String" />
+      <Parameter Name="Estado" Mode="In" Type="Boolean" />
+      <Parameter Name="Resultado" Mode="InOut" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ModificarPersona">
+      <Parameter Name="IdPersona" Mode="In" Type="Int32" />
+      <Parameter Name="TipoDocumento" Mode="In" Type="String" />
+      <Parameter Name="Documento" Mode="In" Type="String" />
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+      <Parameter Name="Apellido" Mode="In" Type="String" />
+      <Parameter Name="Correo" Mode="In" Type="String" />
+      <Parameter Name="Clave" Mode="In" Type="String" />
+      <Parameter Name="IdTipoPersona" Mode="In" Type="Int32" />
+      <Parameter Name="Estado" Mode="In" Type="Boolean" />
+      <Parameter Name="Resultado" Mode="InOut" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ModificarPiso">
+      <Parameter Name="IdPiso" Mode="In" Type="Int32" />
+      <Parameter Name="Descripcion" Mode="In" Type="String" />
+      <Parameter Name="Estado" Mode="In" Type="Boolean" />
+      <Parameter Name="Resultado" Mode="InOut" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ModificarProducto">
+      <Parameter Name="IdProducto" Mode="In" Type="Int32" />
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+      <Parameter Name="Detalle" Mode="In" Type="String" />
+      <Parameter Name="Precio" Mode="In" Type="String" />
+      <Parameter Name="Cantidad" Mode="In" Type="String" />
+      <Parameter Name="Estado" Mode="In" Type="Boolean" />
+      <Parameter Name="Resultado" Mode="InOut" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="sp_RegistrarCategoria">
+      <Parameter Name="Descripcion" Mode="In" Type="String" />
+      <Parameter Name="Resultado" Mode="InOut" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="sp_RegistrarHabitacion">
+      <Parameter Name="Numero" Mode="In" Type="String" />
+      <Parameter Name="Detalle" Mode="In" Type="String" />
+      <Parameter Name="Precio" Mode="In" Type="Decimal" />
+      <Parameter Name="IdPiso" Mode="In" Type="String" />
+      <Parameter Name="IdCategoria" Mode="In" Type="String" />
+      <Parameter Name="Resultado" Mode="InOut" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="sp_RegistrarPersona">
+      <Parameter Name="TipoDocumento" Mode="In" Type="String" />
+      <Parameter Name="Documento" Mode="In" Type="String" />
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+      <Parameter Name="Apellido" Mode="In" Type="String" />
+      <Parameter Name="Correo" Mode="In" Type="String" />
+      <Parameter Name="Clave" Mode="In" Type="String" />
+      <Parameter Name="IdTipoPersona" Mode="In" Type="Int32" />
+      <Parameter Name="Resultado" Mode="InOut" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="sp_RegistrarPiso">
+      <Parameter Name="Descripcion" Mode="In" Type="String" />
+      <Parameter Name="Resultado" Mode="InOut" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="sp_RegistrarProducto">
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+      <Parameter Name="Detalle" Mode="In" Type="String" />
+      <Parameter Name="Precio" Mode="In" Type="String" />
+      <Parameter Name="Cantidad" Mode="In" Type="String" />
+      <Parameter Name="Resultado" Mode="InOut" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="sp_registrarRecepcion">
+      <Parameter Name="IdCliente" Mode="In" Type="Int32" />
+      <Parameter Name="TipoDocumento" Mode="In" Type="String" />
+      <Parameter Name="Documento" Mode="In" Type="String" />
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+      <Parameter Name="Apellido" Mode="In" Type="String" />
+      <Parameter Name="Correo" Mode="In" Type="String" />
+      <Parameter Name="IdHabitacion" Mode="In" Type="Int32" />
+      <Parameter Name="FechaSalida" Mode="In" Type="DateTime" />
+      <Parameter Name="PrecioInicial" Mode="In" Type="Decimal" />
+      <Parameter Name="Adelanto" Mode="In" Type="Decimal" />
+      <Parameter Name="PrecioRestante" Mode="In" Type="Decimal" />
+      <Parameter Name="Observacion" Mode="In" Type="String" />
+      <Parameter Name="Resultado" Mode="InOut" Type="Boolean" />
+    </FunctionImport>
+  </EntityContainer>
+</Schema>

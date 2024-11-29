@@ -1,0 +1,51 @@
+﻿@model ProyectoHotel.Models.DETALLE_VENTA
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DETALLE_VENTA</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Cantidad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cantidad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SubTotal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SubTotal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PRODUCTO.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PRODUCTO.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VENTA.Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VENTA.Estado)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdDetalleVenta }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
