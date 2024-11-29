@@ -1,0 +1,917 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DB_HOTELModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CATEGORIA">
+          <Key>
+            <PropertyRef Name="IdCategoria" />
+          </Key>
+          <Property Name="IdCategoria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+          <Property Name="Estado" Type="bit" />
+          <Property Name="FechaCreacion" Type="datetime" />
+        </EntityType>
+        <EntityType Name="DETALLE_VENTA">
+          <Key>
+            <PropertyRef Name="IdDetalleVenta" />
+          </Key>
+          <Property Name="IdDetalleVenta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdVenta" Type="int" />
+          <Property Name="IdProducto" Type="int" />
+          <Property Name="Cantidad" Type="int" />
+          <Property Name="SubTotal" Type="decimal" Precision="10" Scale="2" />
+        </EntityType>
+        <EntityType Name="ESTADO_HABITACION">
+          <Key>
+            <PropertyRef Name="IdEstadoHabitacion" />
+          </Key>
+          <Property Name="IdEstadoHabitacion" Type="int" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+          <Property Name="Estado" Type="bit" />
+          <Property Name="FechaCreacion" Type="datetime" />
+        </EntityType>
+        <EntityType Name="HABITACION">
+          <Key>
+            <PropertyRef Name="IdHabitacion" />
+          </Key>
+          <Property Name="IdHabitacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Numero" Type="varchar" MaxLength="50" />
+          <Property Name="Detalle" Type="varchar" MaxLength="100" />
+          <Property Name="Precio" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="IdEstadoHabitacion" Type="int" />
+          <Property Name="IdPiso" Type="int" />
+          <Property Name="IdCategoria" Type="int" />
+          <Property Name="Estado" Type="bit" />
+          <Property Name="FechaCreacion" Type="datetime" />
+        </EntityType>
+        <EntityType Name="PERSONA">
+          <Key>
+            <PropertyRef Name="IdPersona" />
+          </Key>
+          <Property Name="IdPersona" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TipoDocumento" Type="varchar" MaxLength="15" />
+          <Property Name="Documento" Type="varchar" MaxLength="15" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+          <Property Name="Apellido" Type="varchar" MaxLength="50" />
+          <Property Name="Correo" Type="varchar" MaxLength="50" />
+          <Property Name="Clave" Type="varchar" MaxLength="50" />
+          <Property Name="IdTipoPersona" Type="int" />
+          <Property Name="Estado" Type="bit" />
+          <Property Name="FechaCreacion" Type="datetime" />
+        </EntityType>
+        <EntityType Name="PISO">
+          <Key>
+            <PropertyRef Name="IdPiso" />
+          </Key>
+          <Property Name="IdPiso" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+          <Property Name="Estado" Type="bit" />
+          <Property Name="FechaCreacion" Type="datetime" />
+        </EntityType>
+        <EntityType Name="PRODUCTO">
+          <Key>
+            <PropertyRef Name="IdProducto" />
+          </Key>
+          <Property Name="IdProducto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+          <Property Name="Detalle" Type="varchar" MaxLength="100" />
+          <Property Name="Precio" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Cantidad" Type="int" />
+          <Property Name="Estado" Type="bit" />
+          <Property Name="FechaCreacion" Type="datetime" />
+        </EntityType>
+        <EntityType Name="RECEPCION">
+          <Key>
+            <PropertyRef Name="IdRecepcion" />
+          </Key>
+          <Property Name="IdRecepcion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdCliente" Type="int" />
+          <Property Name="IdHabitacion" Type="int" />
+          <Property Name="FechaEntrada" Type="datetime" />
+          <Property Name="FechaSalida" Type="datetime" />
+          <Property Name="FechaSalidaConfirmacion" Type="datetime" />
+          <Property Name="PrecioInicial" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Adelanto" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="PrecioRestante" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="TotalPagado" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="CostoPenalidad" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Observacion" Type="varchar" MaxLength="500" />
+          <Property Name="Estado" Type="bit" />
+        </EntityType>
+        <EntityType Name="TIPO_PERSONA">
+          <Key>
+            <PropertyRef Name="IdTipoPersona" />
+          </Key>
+          <Property Name="IdTipoPersona" Type="int" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+          <Property Name="Estado" Type="bit" />
+          <Property Name="FechaCreacion" Type="datetime" />
+        </EntityType>
+        <EntityType Name="VENTA">
+          <Key>
+            <PropertyRef Name="IdVenta" />
+          </Key>
+          <Property Name="IdVenta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdRecepcion" Type="int" />
+          <Property Name="Total" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Estado" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK__DETALLE_V__IdPro__4D94879B">
+          <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="0..1" />
+          <End Role="DETALLE_VENTA" Type="Self.DETALLE_VENTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCTO">
+              <PropertyRef Name="IdProducto" />
+            </Principal>
+            <Dependent Role="DETALLE_VENTA">
+              <PropertyRef Name="IdProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DETALLE_V__IdVen__4CA06362">
+          <End Role="VENTA" Type="Self.VENTA" Multiplicity="0..1" />
+          <End Role="DETALLE_VENTA" Type="Self.DETALLE_VENTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VENTA">
+              <PropertyRef Name="IdVenta" />
+            </Principal>
+            <Dependent Role="DETALLE_VENTA">
+              <PropertyRef Name="IdVenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HABITACIO__IdCat__31EC6D26">
+          <End Role="CATEGORIA" Type="Self.CATEGORIA" Multiplicity="0..1" />
+          <End Role="HABITACION" Type="Self.HABITACION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORIA">
+              <PropertyRef Name="IdCategoria" />
+            </Principal>
+            <Dependent Role="HABITACION">
+              <PropertyRef Name="IdCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HABITACIO__IdEst__300424B4">
+          <End Role="ESTADO_HABITACION" Type="Self.ESTADO_HABITACION" Multiplicity="0..1" />
+          <End Role="HABITACION" Type="Self.HABITACION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ESTADO_HABITACION">
+              <PropertyRef Name="IdEstadoHabitacion" />
+            </Principal>
+            <Dependent Role="HABITACION">
+              <PropertyRef Name="IdEstadoHabitacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HABITACIO__IdPis__30F848ED">
+          <End Role="PISO" Type="Self.PISO" Multiplicity="0..1" />
+          <End Role="HABITACION" Type="Self.HABITACION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PISO">
+              <PropertyRef Name="IdPiso" />
+            </Principal>
+            <Dependent Role="HABITACION">
+              <PropertyRef Name="IdPiso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PERSONA__IdTipoP__3E52440B">
+          <End Role="TIPO_PERSONA" Type="Self.TIPO_PERSONA" Multiplicity="0..1" />
+          <End Role="PERSONA" Type="Self.PERSONA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPO_PERSONA">
+              <PropertyRef Name="IdTipoPersona" />
+            </Principal>
+            <Dependent Role="PERSONA">
+              <PropertyRef Name="IdTipoPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RECEPCION__IdCli__4316F928">
+          <End Role="PERSONA" Type="Self.PERSONA" Multiplicity="0..1" />
+          <End Role="RECEPCION" Type="Self.RECEPCION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PERSONA">
+              <PropertyRef Name="IdPersona" />
+            </Principal>
+            <Dependent Role="RECEPCION">
+              <PropertyRef Name="IdCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RECEPCION__IdHab__440B1D61">
+          <End Role="HABITACION" Type="Self.HABITACION" Multiplicity="0..1" />
+          <End Role="RECEPCION" Type="Self.RECEPCION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HABITACION">
+              <PropertyRef Name="IdHabitacion" />
+            </Principal>
+            <Dependent Role="RECEPCION">
+              <PropertyRef Name="IdHabitacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VENTA__IdRecepci__49C3F6B7">
+          <End Role="RECEPCION" Type="Self.RECEPCION" Multiplicity="0..1" />
+          <End Role="VENTA" Type="Self.VENTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RECEPCION">
+              <PropertyRef Name="IdRecepcion" />
+            </Principal>
+            <Dependent Role="VENTA">
+              <PropertyRef Name="IdRecepcion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="sp_ModificarCategoria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdCategoria" Type="int" Mode="In" />
+          <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+          <Parameter Name="Estado" Type="bit" Mode="In" />
+          <Parameter Name="Resultado" Type="bit" Mode="InOut" />
+        </Function>
+        <Function Name="sp_ModificarHabitacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdHabitacion" Type="int" Mode="In" />
+          <Parameter Name="Numero" Type="varchar" Mode="In" />
+          <Parameter Name="Detalle" Type="varchar" Mode="In" />
+          <Parameter Name="Precio" Type="decimal" Mode="In" />
+          <Parameter Name="IdPiso" Type="varchar" Mode="In" />
+          <Parameter Name="IdCategoria" Type="varchar" Mode="In" />
+          <Parameter Name="Estado" Type="bit" Mode="In" />
+          <Parameter Name="Resultado" Type="bit" Mode="InOut" />
+        </Function>
+        <Function Name="sp_ModificarPersona" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdPersona" Type="int" Mode="In" />
+          <Parameter Name="TipoDocumento" Type="varchar" Mode="In" />
+          <Parameter Name="Documento" Type="varchar" Mode="In" />
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="Apellido" Type="varchar" Mode="In" />
+          <Parameter Name="Correo" Type="varchar" Mode="In" />
+          <Parameter Name="Clave" Type="varchar" Mode="In" />
+          <Parameter Name="IdTipoPersona" Type="int" Mode="In" />
+          <Parameter Name="Estado" Type="bit" Mode="In" />
+          <Parameter Name="Resultado" Type="bit" Mode="InOut" />
+        </Function>
+        <Function Name="sp_ModificarPiso" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdPiso" Type="int" Mode="In" />
+          <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+          <Parameter Name="Estado" Type="bit" Mode="In" />
+          <Parameter Name="Resultado" Type="bit" Mode="InOut" />
+        </Function>
+        <Function Name="sp_ModificarProducto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdProducto" Type="int" Mode="In" />
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="Detalle" Type="varchar" Mode="In" />
+          <Parameter Name="Precio" Type="varchar" Mode="In" />
+          <Parameter Name="Cantidad" Type="varchar" Mode="In" />
+          <Parameter Name="Estado" Type="bit" Mode="In" />
+          <Parameter Name="Resultado" Type="bit" Mode="InOut" />
+        </Function>
+        <Function Name="sp_RegistrarCategoria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+          <Parameter Name="Resultado" Type="bit" Mode="InOut" />
+        </Function>
+        <Function Name="sp_RegistrarHabitacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Numero" Type="varchar" Mode="In" />
+          <Parameter Name="Detalle" Type="varchar" Mode="In" />
+          <Parameter Name="Precio" Type="decimal" Mode="In" />
+          <Parameter Name="IdPiso" Type="varchar" Mode="In" />
+          <Parameter Name="IdCategoria" Type="varchar" Mode="In" />
+          <Parameter Name="Resultado" Type="bit" Mode="InOut" />
+        </Function>
+        <Function Name="sp_RegistrarPersona" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TipoDocumento" Type="varchar" Mode="In" />
+          <Parameter Name="Documento" Type="varchar" Mode="In" />
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="Apellido" Type="varchar" Mode="In" />
+          <Parameter Name="Correo" Type="varchar" Mode="In" />
+          <Parameter Name="Clave" Type="varchar" Mode="In" />
+          <Parameter Name="IdTipoPersona" Type="int" Mode="In" />
+          <Parameter Name="Resultado" Type="bit" Mode="InOut" />
+        </Function>
+        <Function Name="sp_RegistrarPiso" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+          <Parameter Name="Resultado" Type="bit" Mode="InOut" />
+        </Function>
+        <Function Name="sp_RegistrarProducto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="Detalle" Type="varchar" Mode="In" />
+          <Parameter Name="Precio" Type="varchar" Mode="In" />
+          <Parameter Name="Cantidad" Type="varchar" Mode="In" />
+          <Parameter Name="Resultado" Type="bit" Mode="InOut" />
+        </Function>
+        <Function Name="sp_registrarRecepcion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdCliente" Type="int" Mode="In" />
+          <Parameter Name="TipoDocumento" Type="varchar" Mode="In" />
+          <Parameter Name="Documento" Type="varchar" Mode="In" />
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="Apellido" Type="varchar" Mode="In" />
+          <Parameter Name="Correo" Type="varchar" Mode="In" />
+          <Parameter Name="IdHabitacion" Type="int" Mode="In" />
+          <Parameter Name="FechaSalida" Type="datetime" Mode="In" />
+          <Parameter Name="PrecioInicial" Type="decimal" Mode="In" />
+          <Parameter Name="Adelanto" Type="decimal" Mode="In" />
+          <Parameter Name="PrecioRestante" Type="decimal" Mode="In" />
+          <Parameter Name="Observacion" Type="varchar" Mode="In" />
+          <Parameter Name="Resultado" Type="bit" Mode="InOut" />
+        </Function>
+        <EntityContainer Name="DB_HOTELModelStoreContainer">
+          <EntitySet Name="CATEGORIA" EntityType="Self.CATEGORIA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DETALLE_VENTA" EntityType="Self.DETALLE_VENTA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ESTADO_HABITACION" EntityType="Self.ESTADO_HABITACION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HABITACION" EntityType="Self.HABITACION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PERSONA" EntityType="Self.PERSONA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PISO" EntityType="Self.PISO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PRODUCTO" EntityType="Self.PRODUCTO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RECEPCION" EntityType="Self.RECEPCION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TIPO_PERSONA" EntityType="Self.TIPO_PERSONA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VENTA" EntityType="Self.VENTA" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__DETALLE_V__IdPro__4D94879B" Association="Self.FK__DETALLE_V__IdPro__4D94879B">
+            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+            <End Role="DETALLE_VENTA" EntitySet="DETALLE_VENTA" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DETALLE_V__IdVen__4CA06362" Association="Self.FK__DETALLE_V__IdVen__4CA06362">
+            <End Role="VENTA" EntitySet="VENTA" />
+            <End Role="DETALLE_VENTA" EntitySet="DETALLE_VENTA" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HABITACIO__IdCat__31EC6D26" Association="Self.FK__HABITACIO__IdCat__31EC6D26">
+            <End Role="CATEGORIA" EntitySet="CATEGORIA" />
+            <End Role="HABITACION" EntitySet="HABITACION" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HABITACIO__IdEst__300424B4" Association="Self.FK__HABITACIO__IdEst__300424B4">
+            <End Role="ESTADO_HABITACION" EntitySet="ESTADO_HABITACION" />
+            <End Role="HABITACION" EntitySet="HABITACION" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HABITACIO__IdPis__30F848ED" Association="Self.FK__HABITACIO__IdPis__30F848ED">
+            <End Role="PISO" EntitySet="PISO" />
+            <End Role="HABITACION" EntitySet="HABITACION" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PERSONA__IdTipoP__3E52440B" Association="Self.FK__PERSONA__IdTipoP__3E52440B">
+            <End Role="TIPO_PERSONA" EntitySet="TIPO_PERSONA" />
+            <End Role="PERSONA" EntitySet="PERSONA" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RECEPCION__IdCli__4316F928" Association="Self.FK__RECEPCION__IdCli__4316F928">
+            <End Role="PERSONA" EntitySet="PERSONA" />
+            <End Role="RECEPCION" EntitySet="RECEPCION" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RECEPCION__IdHab__440B1D61" Association="Self.FK__RECEPCION__IdHab__440B1D61">
+            <End Role="HABITACION" EntitySet="HABITACION" />
+            <End Role="RECEPCION" EntitySet="RECEPCION" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VENTA__IdRecepci__49C3F6B7" Association="Self.FK__VENTA__IdRecepci__49C3F6B7">
+            <End Role="RECEPCION" EntitySet="RECEPCION" />
+            <End Role="VENTA" EntitySet="VENTA" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DB_HOTELModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CATEGORIA">
+          <Key>
+            <PropertyRef Name="IdCategoria" />
+          </Key>
+          <Property Name="IdCategoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="Boolean" />
+          <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="HABITACIONs" Relationship="Self.FK__HABITACIO__IdCat__31EC6D26" FromRole="CATEGORIA" ToRole="HABITACION" />
+        </EntityType>
+        <EntityType Name="DETALLE_VENTA">
+          <Key>
+            <PropertyRef Name="IdDetalleVenta" />
+          </Key>
+          <Property Name="IdDetalleVenta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdVenta" Type="Int32" />
+          <Property Name="IdProducto" Type="Int32" />
+          <Property Name="Cantidad" Type="Int32" />
+          <Property Name="SubTotal" Type="Decimal" Precision="10" Scale="2" />
+          <NavigationProperty Name="PRODUCTO" Relationship="Self.FK__DETALLE_V__IdPro__4D94879B" FromRole="DETALLE_VENTA" ToRole="PRODUCTO" />
+          <NavigationProperty Name="VENTA" Relationship="Self.FK__DETALLE_V__IdVen__4CA06362" FromRole="DETALLE_VENTA" ToRole="VENTA" />
+        </EntityType>
+        <EntityType Name="ESTADO_HABITACION">
+          <Key>
+            <PropertyRef Name="IdEstadoHabitacion" />
+          </Key>
+          <Property Name="IdEstadoHabitacion" Type="Int32" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="Boolean" />
+          <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="HABITACIONs" Relationship="Self.FK__HABITACIO__IdEst__300424B4" FromRole="ESTADO_HABITACION" ToRole="HABITACION" />
+        </EntityType>
+        <EntityType Name="HABITACION">
+          <Key>
+            <PropertyRef Name="IdHabitacion" />
+          </Key>
+          <Property Name="IdHabitacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Numero" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Detalle" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Precio" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="IdEstadoHabitacion" Type="Int32" />
+          <Property Name="IdPiso" Type="Int32" />
+          <Property Name="IdCategoria" Type="Int32" />
+          <Property Name="Estado" Type="Boolean" />
+          <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="CATEGORIA" Relationship="Self.FK__HABITACIO__IdCat__31EC6D26" FromRole="HABITACION" ToRole="CATEGORIA" />
+          <NavigationProperty Name="ESTADO_HABITACION" Relationship="Self.FK__HABITACIO__IdEst__300424B4" FromRole="HABITACION" ToRole="ESTADO_HABITACION" />
+          <NavigationProperty Name="PISO" Relationship="Self.FK__HABITACIO__IdPis__30F848ED" FromRole="HABITACION" ToRole="PISO" />
+          <NavigationProperty Name="RECEPCIONs" Relationship="Self.FK__RECEPCION__IdHab__440B1D61" FromRole="HABITACION" ToRole="RECEPCION" />
+        </EntityType>
+        <EntityType Name="PERSONA">
+          <Key>
+            <PropertyRef Name="IdPersona" />
+          </Key>
+          <Property Name="IdPersona" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TipoDocumento" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Documento" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Correo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Clave" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IdTipoPersona" Type="Int32" />
+          <Property Name="Estado" Type="Boolean" />
+          <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="TIPO_PERSONA" Relationship="Self.FK__PERSONA__IdTipoP__3E52440B" FromRole="PERSONA" ToRole="TIPO_PERSONA" />
+          <NavigationProperty Name="RECEPCIONs" Relationship="Self.FK__RECEPCION__IdCli__4316F928" FromRole="PERSONA" ToRole="RECEPCION" />
+        </EntityType>
+        <EntityType Name="PISO">
+          <Key>
+            <PropertyRef Name="IdPiso" />
+          </Key>
+          <Property Name="IdPiso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="Boolean" />
+          <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="HABITACIONs" Relationship="Self.FK__HABITACIO__IdPis__30F848ED" FromRole="PISO" ToRole="HABITACION" />
+        </EntityType>
+        <EntityType Name="PRODUCTO">
+          <Key>
+            <PropertyRef Name="IdProducto" />
+          </Key>
+          <Property Name="IdProducto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Detalle" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Precio" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Cantidad" Type="Int32" />
+          <Property Name="Estado" Type="Boolean" />
+          <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="DETALLE_VENTA" Relationship="Self.FK__DETALLE_V__IdPro__4D94879B" FromRole="PRODUCTO" ToRole="DETALLE_VENTA" />
+        </EntityType>
+        <EntityType Name="RECEPCION">
+          <Key>
+            <PropertyRef Name="IdRecepcion" />
+          </Key>
+          <Property Name="IdRecepcion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdCliente" Type="Int32" />
+          <Property Name="IdHabitacion" Type="Int32" />
+          <Property Name="FechaEntrada" Type="DateTime" Precision="3" />
+          <Property Name="FechaSalida" Type="DateTime" Precision="3" />
+          <Property Name="FechaSalidaConfirmacion" Type="DateTime" Precision="3" />
+          <Property Name="PrecioInicial" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Adelanto" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="PrecioRestante" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="TotalPagado" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="CostoPenalidad" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Observacion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="Boolean" />
+          <NavigationProperty Name="HABITACION" Relationship="Self.FK__RECEPCION__IdHab__440B1D61" FromRole="RECEPCION" ToRole="HABITACION" />
+          <NavigationProperty Name="PERSONA" Relationship="Self.FK__RECEPCION__IdCli__4316F928" FromRole="RECEPCION" ToRole="PERSONA" />
+          <NavigationProperty Name="VENTAs" Relationship="Self.FK__VENTA__IdRecepci__49C3F6B7" FromRole="RECEPCION" ToRole="VENTA" />
+        </EntityType>
+        <EntityType Name="TIPO_PERSONA">
+          <Key>
+            <PropertyRef Name="IdTipoPersona" />
+          </Key>
+          <Property Name="IdTipoPersona" Type="Int32" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="Boolean" />
+          <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="PERSONAs" Relationship="Self.FK__PERSONA__IdTipoP__3E52440B" FromRole="TIPO_PERSONA" ToRole="PERSONA" />
+        </EntityType>
+        <EntityType Name="VENTA">
+          <Key>
+            <PropertyRef Name="IdVenta" />
+          </Key>
+          <Property Name="IdVenta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdRecepcion" Type="Int32" />
+          <Property Name="Total" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="DETALLE_VENTA" Relationship="Self.FK__DETALLE_V__IdVen__4CA06362" FromRole="VENTA" ToRole="DETALLE_VENTA" />
+          <NavigationProperty Name="RECEPCION" Relationship="Self.FK__VENTA__IdRecepci__49C3F6B7" FromRole="VENTA" ToRole="RECEPCION" />
+        </EntityType>
+        <Association Name="FK__HABITACIO__IdCat__31EC6D26">
+          <End Role="CATEGORIA" Type="Self.CATEGORIA" Multiplicity="0..1" />
+          <End Role="HABITACION" Type="Self.HABITACION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORIA">
+              <PropertyRef Name="IdCategoria" />
+            </Principal>
+            <Dependent Role="HABITACION">
+              <PropertyRef Name="IdCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DETALLE_V__IdPro__4D94879B">
+          <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="0..1" />
+          <End Role="DETALLE_VENTA" Type="Self.DETALLE_VENTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCTO">
+              <PropertyRef Name="IdProducto" />
+            </Principal>
+            <Dependent Role="DETALLE_VENTA">
+              <PropertyRef Name="IdProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DETALLE_V__IdVen__4CA06362">
+          <End Role="VENTA" Type="Self.VENTA" Multiplicity="0..1" />
+          <End Role="DETALLE_VENTA" Type="Self.DETALLE_VENTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VENTA">
+              <PropertyRef Name="IdVenta" />
+            </Principal>
+            <Dependent Role="DETALLE_VENTA">
+              <PropertyRef Name="IdVenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HABITACIO__IdEst__300424B4">
+          <End Role="ESTADO_HABITACION" Type="Self.ESTADO_HABITACION" Multiplicity="0..1" />
+          <End Role="HABITACION" Type="Self.HABITACION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ESTADO_HABITACION">
+              <PropertyRef Name="IdEstadoHabitacion" />
+            </Principal>
+            <Dependent Role="HABITACION">
+              <PropertyRef Name="IdEstadoHabitacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HABITACIO__IdPis__30F848ED">
+          <End Role="PISO" Type="Self.PISO" Multiplicity="0..1" />
+          <End Role="HABITACION" Type="Self.HABITACION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PISO">
+              <PropertyRef Name="IdPiso" />
+            </Principal>
+            <Dependent Role="HABITACION">
+              <PropertyRef Name="IdPiso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RECEPCION__IdHab__440B1D61">
+          <End Role="HABITACION" Type="Self.HABITACION" Multiplicity="0..1" />
+          <End Role="RECEPCION" Type="Self.RECEPCION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HABITACION">
+              <PropertyRef Name="IdHabitacion" />
+            </Principal>
+            <Dependent Role="RECEPCION">
+              <PropertyRef Name="IdHabitacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PERSONA__IdTipoP__3E52440B">
+          <End Role="TIPO_PERSONA" Type="Self.TIPO_PERSONA" Multiplicity="0..1" />
+          <End Role="PERSONA" Type="Self.PERSONA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPO_PERSONA">
+              <PropertyRef Name="IdTipoPersona" />
+            </Principal>
+            <Dependent Role="PERSONA">
+              <PropertyRef Name="IdTipoPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RECEPCION__IdCli__4316F928">
+          <End Role="PERSONA" Type="Self.PERSONA" Multiplicity="0..1" />
+          <End Role="RECEPCION" Type="Self.RECEPCION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PERSONA">
+              <PropertyRef Name="IdPersona" />
+            </Principal>
+            <Dependent Role="RECEPCION">
+              <PropertyRef Name="IdCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VENTA__IdRecepci__49C3F6B7">
+          <End Role="RECEPCION" Type="Self.RECEPCION" Multiplicity="0..1" />
+          <End Role="VENTA" Type="Self.VENTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RECEPCION">
+              <PropertyRef Name="IdRecepcion" />
+            </Principal>
+            <Dependent Role="VENTA">
+              <PropertyRef Name="IdRecepcion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DB_HOTELEntities_v2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CATEGORIAs" EntityType="Self.CATEGORIA" />
+          <EntitySet Name="DETALLE_VENTA" EntityType="Self.DETALLE_VENTA" />
+          <EntitySet Name="ESTADO_HABITACION" EntityType="Self.ESTADO_HABITACION" />
+          <EntitySet Name="HABITACIONs" EntityType="Self.HABITACION" />
+          <EntitySet Name="PERSONAs" EntityType="Self.PERSONA" />
+          <EntitySet Name="PISOes" EntityType="Self.PISO" />
+          <EntitySet Name="PRODUCTOes" EntityType="Self.PRODUCTO" />
+          <EntitySet Name="RECEPCIONs" EntityType="Self.RECEPCION" />
+          <EntitySet Name="TIPO_PERSONA" EntityType="Self.TIPO_PERSONA" />
+          <EntitySet Name="VENTAs" EntityType="Self.VENTA" />
+          <AssociationSet Name="FK__HABITACIO__IdCat__31EC6D26" Association="Self.FK__HABITACIO__IdCat__31EC6D26">
+            <End Role="CATEGORIA" EntitySet="CATEGORIAs" />
+            <End Role="HABITACION" EntitySet="HABITACIONs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DETALLE_V__IdPro__4D94879B" Association="Self.FK__DETALLE_V__IdPro__4D94879B">
+            <End Role="PRODUCTO" EntitySet="PRODUCTOes" />
+            <End Role="DETALLE_VENTA" EntitySet="DETALLE_VENTA" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DETALLE_V__IdVen__4CA06362" Association="Self.FK__DETALLE_V__IdVen__4CA06362">
+            <End Role="VENTA" EntitySet="VENTAs" />
+            <End Role="DETALLE_VENTA" EntitySet="DETALLE_VENTA" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HABITACIO__IdEst__300424B4" Association="Self.FK__HABITACIO__IdEst__300424B4">
+            <End Role="ESTADO_HABITACION" EntitySet="ESTADO_HABITACION" />
+            <End Role="HABITACION" EntitySet="HABITACIONs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HABITACIO__IdPis__30F848ED" Association="Self.FK__HABITACIO__IdPis__30F848ED">
+            <End Role="PISO" EntitySet="PISOes" />
+            <End Role="HABITACION" EntitySet="HABITACIONs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RECEPCION__IdHab__440B1D61" Association="Self.FK__RECEPCION__IdHab__440B1D61">
+            <End Role="HABITACION" EntitySet="HABITACIONs" />
+            <End Role="RECEPCION" EntitySet="RECEPCIONs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PERSONA__IdTipoP__3E52440B" Association="Self.FK__PERSONA__IdTipoP__3E52440B">
+            <End Role="TIPO_PERSONA" EntitySet="TIPO_PERSONA" />
+            <End Role="PERSONA" EntitySet="PERSONAs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RECEPCION__IdCli__4316F928" Association="Self.FK__RECEPCION__IdCli__4316F928">
+            <End Role="PERSONA" EntitySet="PERSONAs" />
+            <End Role="RECEPCION" EntitySet="RECEPCIONs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VENTA__IdRecepci__49C3F6B7" Association="Self.FK__VENTA__IdRecepci__49C3F6B7">
+            <End Role="RECEPCION" EntitySet="RECEPCIONs" />
+            <End Role="VENTA" EntitySet="VENTAs" />
+          </AssociationSet>
+          <FunctionImport Name="sp_ModificarCategoria">
+            <Parameter Name="IdCategoria" Mode="In" Type="Int32" />
+            <Parameter Name="Descripcion" Mode="In" Type="String" />
+            <Parameter Name="Estado" Mode="In" Type="Boolean" />
+            <Parameter Name="Resultado" Mode="InOut" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ModificarHabitacion">
+            <Parameter Name="IdHabitacion" Mode="In" Type="Int32" />
+            <Parameter Name="Numero" Mode="In" Type="String" />
+            <Parameter Name="Detalle" Mode="In" Type="String" />
+            <Parameter Name="Precio" Mode="In" Type="Decimal" />
+            <Parameter Name="IdPiso" Mode="In" Type="String" />
+            <Parameter Name="IdCategoria" Mode="In" Type="String" />
+            <Parameter Name="Estado" Mode="In" Type="Boolean" />
+            <Parameter Name="Resultado" Mode="InOut" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ModificarPersona">
+            <Parameter Name="IdPersona" Mode="In" Type="Int32" />
+            <Parameter Name="TipoDocumento" Mode="In" Type="String" />
+            <Parameter Name="Documento" Mode="In" Type="String" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Apellido" Mode="In" Type="String" />
+            <Parameter Name="Correo" Mode="In" Type="String" />
+            <Parameter Name="Clave" Mode="In" Type="String" />
+            <Parameter Name="IdTipoPersona" Mode="In" Type="Int32" />
+            <Parameter Name="Estado" Mode="In" Type="Boolean" />
+            <Parameter Name="Resultado" Mode="InOut" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ModificarPiso">
+            <Parameter Name="IdPiso" Mode="In" Type="Int32" />
+            <Parameter Name="Descripcion" Mode="In" Type="String" />
+            <Parameter Name="Estado" Mode="In" Type="Boolean" />
+            <Parameter Name="Resultado" Mode="InOut" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ModificarProducto">
+            <Parameter Name="IdProducto" Mode="In" Type="Int32" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Detalle" Mode="In" Type="String" />
+            <Parameter Name="Precio" Mode="In" Type="String" />
+            <Parameter Name="Cantidad" Mode="In" Type="String" />
+            <Parameter Name="Estado" Mode="In" Type="Boolean" />
+            <Parameter Name="Resultado" Mode="InOut" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="sp_RegistrarCategoria">
+            <Parameter Name="Descripcion" Mode="In" Type="String" />
+            <Parameter Name="Resultado" Mode="InOut" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="sp_RegistrarHabitacion">
+            <Parameter Name="Numero" Mode="In" Type="String" />
+            <Parameter Name="Detalle" Mode="In" Type="String" />
+            <Parameter Name="Precio" Mode="In" Type="Decimal" />
+            <Parameter Name="IdPiso" Mode="In" Type="String" />
+            <Parameter Name="IdCategoria" Mode="In" Type="String" />
+            <Parameter Name="Resultado" Mode="InOut" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="sp_RegistrarPersona">
+            <Parameter Name="TipoDocumento" Mode="In" Type="String" />
+            <Parameter Name="Documento" Mode="In" Type="String" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Apellido" Mode="In" Type="String" />
+            <Parameter Name="Correo" Mode="In" Type="String" />
+            <Parameter Name="Clave" Mode="In" Type="String" />
+            <Parameter Name="IdTipoPersona" Mode="In" Type="Int32" />
+            <Parameter Name="Resultado" Mode="InOut" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="sp_RegistrarPiso">
+            <Parameter Name="Descripcion" Mode="In" Type="String" />
+            <Parameter Name="Resultado" Mode="InOut" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="sp_RegistrarProducto">
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Detalle" Mode="In" Type="String" />
+            <Parameter Name="Precio" Mode="In" Type="String" />
+            <Parameter Name="Cantidad" Mode="In" Type="String" />
+            <Parameter Name="Resultado" Mode="InOut" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="sp_registrarRecepcion">
+            <Parameter Name="IdCliente" Mode="In" Type="Int32" />
+            <Parameter Name="TipoDocumento" Mode="In" Type="String" />
+            <Parameter Name="Documento" Mode="In" Type="String" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Apellido" Mode="In" Type="String" />
+            <Parameter Name="Correo" Mode="In" Type="String" />
+            <Parameter Name="IdHabitacion" Mode="In" Type="Int32" />
+            <Parameter Name="FechaSalida" Mode="In" Type="DateTime" />
+            <Parameter Name="PrecioInicial" Mode="In" Type="Decimal" />
+            <Parameter Name="Adelanto" Mode="In" Type="Decimal" />
+            <Parameter Name="PrecioRestante" Mode="In" Type="Decimal" />
+            <Parameter Name="Observacion" Mode="In" Type="String" />
+            <Parameter Name="Resultado" Mode="InOut" Type="Boolean" />
+          </FunctionImport>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DB_HOTELModelStoreContainer" CdmEntityContainer="DB_HOTELEntities_v2">
+          <EntitySetMapping Name="CATEGORIAs">
+            <EntityTypeMapping TypeName="DB_HOTELModel.CATEGORIA">
+              <MappingFragment StoreEntitySet="CATEGORIA">
+                <ScalarProperty Name="IdCategoria" ColumnName="IdCategoria" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DETALLE_VENTA">
+            <EntityTypeMapping TypeName="DB_HOTELModel.DETALLE_VENTA">
+              <MappingFragment StoreEntitySet="DETALLE_VENTA">
+                <ScalarProperty Name="IdDetalleVenta" ColumnName="IdDetalleVenta" />
+                <ScalarProperty Name="IdVenta" ColumnName="IdVenta" />
+                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ESTADO_HABITACION">
+            <EntityTypeMapping TypeName="DB_HOTELModel.ESTADO_HABITACION">
+              <MappingFragment StoreEntitySet="ESTADO_HABITACION">
+                <ScalarProperty Name="IdEstadoHabitacion" ColumnName="IdEstadoHabitacion" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HABITACIONs">
+            <EntityTypeMapping TypeName="DB_HOTELModel.HABITACION">
+              <MappingFragment StoreEntitySet="HABITACION">
+                <ScalarProperty Name="IdHabitacion" ColumnName="IdHabitacion" />
+                <ScalarProperty Name="Numero" ColumnName="Numero" />
+                <ScalarProperty Name="Detalle" ColumnName="Detalle" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="IdEstadoHabitacion" ColumnName="IdEstadoHabitacion" />
+                <ScalarProperty Name="IdPiso" ColumnName="IdPiso" />
+                <ScalarProperty Name="IdCategoria" ColumnName="IdCategoria" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PERSONAs">
+            <EntityTypeMapping TypeName="DB_HOTELModel.PERSONA">
+              <MappingFragment StoreEntitySet="PERSONA">
+                <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+                <ScalarProperty Name="TipoDocumento" ColumnName="TipoDocumento" />
+                <ScalarProperty Name="Documento" ColumnName="Documento" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Clave" ColumnName="Clave" />
+                <ScalarProperty Name="IdTipoPersona" ColumnName="IdTipoPersona" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PISOes">
+            <EntityTypeMapping TypeName="DB_HOTELModel.PISO">
+              <MappingFragment StoreEntitySet="PISO">
+                <ScalarProperty Name="IdPiso" ColumnName="IdPiso" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PRODUCTOes">
+            <EntityTypeMapping TypeName="DB_HOTELModel.PRODUCTO">
+              <MappingFragment StoreEntitySet="PRODUCTO">
+                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Detalle" ColumnName="Detalle" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RECEPCIONs">
+            <EntityTypeMapping TypeName="DB_HOTELModel.RECEPCION">
+              <MappingFragment StoreEntitySet="RECEPCION">
+                <ScalarProperty Name="IdRecepcion" ColumnName="IdRecepcion" />
+                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+                <ScalarProperty Name="IdHabitacion" ColumnName="IdHabitacion" />
+                <ScalarProperty Name="FechaEntrada" ColumnName="FechaEntrada" />
+                <ScalarProperty Name="FechaSalida" ColumnName="FechaSalida" />
+                <ScalarProperty Name="FechaSalidaConfirmacion" ColumnName="FechaSalidaConfirmacion" />
+                <ScalarProperty Name="PrecioInicial" ColumnName="PrecioInicial" />
+                <ScalarProperty Name="Adelanto" ColumnName="Adelanto" />
+                <ScalarProperty Name="PrecioRestante" ColumnName="PrecioRestante" />
+                <ScalarProperty Name="TotalPagado" ColumnName="TotalPagado" />
+                <ScalarProperty Name="CostoPenalidad" ColumnName="CostoPenalidad" />
+                <ScalarProperty Name="Observacion" ColumnName="Observacion" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TIPO_PERSONA">
+            <EntityTypeMapping TypeName="DB_HOTELModel.TIPO_PERSONA">
+              <MappingFragment StoreEntitySet="TIPO_PERSONA">
+                <ScalarProperty Name="IdTipoPersona" ColumnName="IdTipoPersona" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VENTAs">
+            <EntityTypeMapping TypeName="DB_HOTELModel.VENTA">
+              <MappingFragment StoreEntitySet="VENTA">
+                <ScalarProperty Name="IdVenta" ColumnName="IdVenta" />
+                <ScalarProperty Name="IdRecepcion" ColumnName="IdRecepcion" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_ModificarCategoria" FunctionName="DB_HOTELModel.Store.sp_ModificarCategoria" />
+          <FunctionImportMapping FunctionImportName="sp_ModificarHabitacion" FunctionName="DB_HOTELModel.Store.sp_ModificarHabitacion" />
+          <FunctionImportMapping FunctionImportName="sp_ModificarPersona" FunctionName="DB_HOTELModel.Store.sp_ModificarPersona" />
+          <FunctionImportMapping FunctionImportName="sp_ModificarPiso" FunctionName="DB_HOTELModel.Store.sp_ModificarPiso" />
+          <FunctionImportMapping FunctionImportName="sp_ModificarProducto" FunctionName="DB_HOTELModel.Store.sp_ModificarProducto" />
+          <FunctionImportMapping FunctionImportName="sp_RegistrarCategoria" FunctionName="DB_HOTELModel.Store.sp_RegistrarCategoria" />
+          <FunctionImportMapping FunctionImportName="sp_RegistrarHabitacion" FunctionName="DB_HOTELModel.Store.sp_RegistrarHabitacion" />
+          <FunctionImportMapping FunctionImportName="sp_RegistrarPersona" FunctionName="DB_HOTELModel.Store.sp_RegistrarPersona" />
+          <FunctionImportMapping FunctionImportName="sp_RegistrarPiso" FunctionName="DB_HOTELModel.Store.sp_RegistrarPiso" />
+          <FunctionImportMapping FunctionImportName="sp_RegistrarProducto" FunctionName="DB_HOTELModel.Store.sp_RegistrarProducto" />
+          <FunctionImportMapping FunctionImportName="sp_registrarRecepcion" FunctionName="DB_HOTELModel.Store.sp_registrarRecepcion" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

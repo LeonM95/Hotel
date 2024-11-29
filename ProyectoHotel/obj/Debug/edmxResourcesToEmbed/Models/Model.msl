@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DB_HOTELModelStoreContainer" CdmEntityContainer="DB_HOTELEntities">
+    <EntitySetMapping Name="CATEGORIAs">
+      <EntityTypeMapping TypeName="DB_HOTELModel.CATEGORIA">
+        <MappingFragment StoreEntitySet="CATEGORIA">
+          <ScalarProperty Name="IdCategoria" ColumnName="IdCategoria" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DETALLE_VENTA">
+      <EntityTypeMapping TypeName="DB_HOTELModel.DETALLE_VENTA">
+        <MappingFragment StoreEntitySet="DETALLE_VENTA">
+          <ScalarProperty Name="IdDetalleVenta" ColumnName="IdDetalleVenta" />
+          <ScalarProperty Name="IdVenta" ColumnName="IdVenta" />
+          <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ESTADO_HABITACION">
+      <EntityTypeMapping TypeName="DB_HOTELModel.ESTADO_HABITACION">
+        <MappingFragment StoreEntitySet="ESTADO_HABITACION">
+          <ScalarProperty Name="IdEstadoHabitacion" ColumnName="IdEstadoHabitacion" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HABITACIONs">
+      <EntityTypeMapping TypeName="DB_HOTELModel.HABITACION">
+        <MappingFragment StoreEntitySet="HABITACION">
+          <ScalarProperty Name="IdHabitacion" ColumnName="IdHabitacion" />
+          <ScalarProperty Name="Numero" ColumnName="Numero" />
+          <ScalarProperty Name="Detalle" ColumnName="Detalle" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+          <ScalarProperty Name="IdEstadoHabitacion" ColumnName="IdEstadoHabitacion" />
+          <ScalarProperty Name="IdPiso" ColumnName="IdPiso" />
+          <ScalarProperty Name="IdCategoria" ColumnName="IdCategoria" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PERSONAs">
+      <EntityTypeMapping TypeName="DB_HOTELModel.PERSONA">
+        <MappingFragment StoreEntitySet="PERSONA">
+          <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+          <ScalarProperty Name="TipoDocumento" ColumnName="TipoDocumento" />
+          <ScalarProperty Name="Documento" ColumnName="Documento" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
+          <ScalarProperty Name="Clave" ColumnName="Clave" />
+          <ScalarProperty Name="IdTipoPersona" ColumnName="IdTipoPersona" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PISOes">
+      <EntityTypeMapping TypeName="DB_HOTELModel.PISO">
+        <MappingFragment StoreEntitySet="PISO">
+          <ScalarProperty Name="IdPiso" ColumnName="IdPiso" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PRODUCTOes">
+      <EntityTypeMapping TypeName="DB_HOTELModel.PRODUCTO">
+        <MappingFragment StoreEntitySet="PRODUCTO">
+          <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Detalle" ColumnName="Detalle" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RECEPCIONs">
+      <EntityTypeMapping TypeName="DB_HOTELModel.RECEPCION">
+        <MappingFragment StoreEntitySet="RECEPCION">
+          <ScalarProperty Name="IdRecepcion" ColumnName="IdRecepcion" />
+          <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+          <ScalarProperty Name="IdHabitacion" ColumnName="IdHabitacion" />
+          <ScalarProperty Name="FechaEntrada" ColumnName="FechaEntrada" />
+          <ScalarProperty Name="FechaSalida" ColumnName="FechaSalida" />
+          <ScalarProperty Name="FechaSalidaConfirmacion" ColumnName="FechaSalidaConfirmacion" />
+          <ScalarProperty Name="PrecioInicial" ColumnName="PrecioInicial" />
+          <ScalarProperty Name="Adelanto" ColumnName="Adelanto" />
+          <ScalarProperty Name="PrecioRestante" ColumnName="PrecioRestante" />
+          <ScalarProperty Name="TotalPagado" ColumnName="TotalPagado" />
+          <ScalarProperty Name="CostoPenalidad" ColumnName="CostoPenalidad" />
+          <ScalarProperty Name="Observacion" ColumnName="Observacion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TIPO_PERSONA">
+      <EntityTypeMapping TypeName="DB_HOTELModel.TIPO_PERSONA">
+        <MappingFragment StoreEntitySet="TIPO_PERSONA">
+          <ScalarProperty Name="IdTipoPersona" ColumnName="IdTipoPersona" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VENTAs">
+      <EntityTypeMapping TypeName="DB_HOTELModel.VENTA">
+        <MappingFragment StoreEntitySet="VENTA">
+          <ScalarProperty Name="IdVenta" ColumnName="IdVenta" />
+          <ScalarProperty Name="IdRecepcion" ColumnName="IdRecepcion" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_ModificarCategoria" FunctionName="DB_HOTELModel.Store.sp_ModificarCategoria" />
+    <FunctionImportMapping FunctionImportName="sp_ModificarHabitacion" FunctionName="DB_HOTELModel.Store.sp_ModificarHabitacion" />
+    <FunctionImportMapping FunctionImportName="sp_ModificarPersona" FunctionName="DB_HOTELModel.Store.sp_ModificarPersona" />
+    <FunctionImportMapping FunctionImportName="sp_ModificarPiso" FunctionName="DB_HOTELModel.Store.sp_ModificarPiso" />
+    <FunctionImportMapping FunctionImportName="sp_ModificarProducto" FunctionName="DB_HOTELModel.Store.sp_ModificarProducto" />
+    <FunctionImportMapping FunctionImportName="sp_RegistrarCategoria" FunctionName="DB_HOTELModel.Store.sp_RegistrarCategoria" />
+    <FunctionImportMapping FunctionImportName="sp_RegistrarHabitacion" FunctionName="DB_HOTELModel.Store.sp_RegistrarHabitacion" />
+    <FunctionImportMapping FunctionImportName="sp_RegistrarPersona" FunctionName="DB_HOTELModel.Store.sp_RegistrarPersona" />
+    <FunctionImportMapping FunctionImportName="sp_RegistrarPiso" FunctionName="DB_HOTELModel.Store.sp_RegistrarPiso" />
+    <FunctionImportMapping FunctionImportName="sp_RegistrarProducto" FunctionName="DB_HOTELModel.Store.sp_RegistrarProducto" />
+    <FunctionImportMapping FunctionImportName="sp_registrarRecepcion" FunctionName="DB_HOTELModel.Store.sp_registrarRecepcion" />
+  </EntityContainerMapping>
+</Mapping>
